@@ -9,64 +9,69 @@
 </head>
 <body>
     <div class="container">
+        <div class="lang-switcher">
+            <button id="langTR" class="lang-btn active">TR</button>
+            <button id="langEN" class="lang-btn">EN</button>
+        </div>
+        
         <header>
             <div class="logo">
                 <div class="logo-icon"></div>
                 <h1>burnout</h1>
             </div>
-            <p class="tagline">Okunan mesaj, yok olan mesajdır.</p>
+            <p class="tagline" data-tr="Okunan mesaj, yok olan mesajdır." data-en="Read once, gone forever.">Okunan mesaj, yok olan mesajdır.</p>
         </header>
 
         <section id="createSection" class="card">
-            <h2>Yeni Mesaj</h2>
+            <h2 data-tr="Yeni Mesaj" data-en="New Message">Yeni Mesaj</h2>
             
             <div class="form-group">
-                <label for="messageInput">İçerik</label>
-                <textarea id="messageInput" placeholder="Mesajınızı yazın..." rows="4"></textarea>
+                <label for="messageInput" data-tr="İçerik" data-en="Content">İçerik</label>
+                <textarea id="messageInput" data-tr-placeholder="Mesajınızı yazın..." data-en-placeholder="Type your message..." placeholder="Mesajınızı yazın..." rows="4"></textarea>
             </div>
             
             <div class="form-group">
-                <label for="durationInput">İmha süresi</label>
+                <label for="durationInput" data-tr="İmha süresi" data-en="Destruct timer">İmha süresi</label>
                 <div class="duration-wrapper">
                     <input type="range" id="durationRange" min="5" max="60" value="15">
                     <div class="duration-display">
                         <input type="number" id="durationInput" min="5" max="60" value="15">
-                        <span>saniye</span>
+                        <span data-tr="saniye" data-en="seconds">saniye</span>
                     </div>
                 </div>
             </div>
             
             <button id="createBtn" class="btn btn-primary">
-                <span class="btn-text">Oluştur</span>
-                <span class="btn-loading">Oluşturuluyor...</span>
+                <span class="btn-text" data-tr="Oluştur" data-en="Create">Oluştur</span>
+                <span class="btn-loading" data-tr="Oluşturuluyor..." data-en="Creating...">Oluşturuluyor...</span>
             </button>
 
             <div id="resultSection" class="result hidden">
                 <div class="result-header">
                     <div class="status-dot"></div>
-                    <span>Link hazır</span>
+                    <span data-tr="Link hazır" data-en="Link ready">Link hazır</span>
                 </div>
-                <p class="result-info">Bu link yalnızca bir kez görüntülenebilir.</p>
+                <p class="result-info" data-tr="Bu link yalnızca bir kez görüntülenebilir." data-en="This link can only be viewed once.">Bu link yalnızca bir kez görüntülenebilir.</p>
                 
                 <div class="url-box">
                     <input type="text" id="resultUrl" readonly>
-                    <button id="copyBtn" class="btn btn-copy">Kopyala</button>
+                    <button id="copyBtn" class="btn btn-copy" data-tr="Kopyala" data-en="Copy">Kopyala</button>
                 </div>
                 
-                <button id="newMessageBtn" class="btn btn-ghost">Yeni mesaj oluştur</button>
+                <button id="newMessageBtn" class="btn btn-ghost" data-tr="Yeni mesaj oluştur" data-en="Create new message">Yeni mesaj oluştur</button>
             </div>
         </section>
 
         <section id="viewSection" class="card hidden">
             <div id="messageLoading" class="message-loading">
                 <div class="spinner"></div>
-                <p>Şifre çözülüyor...</p>
+                <p data-tr="Şifre çözülüyor..." data-en="Decrypting...">Şifre çözülüyor...</p>
             </div>
             
             <div id="messageContent" class="message-content hidden">
                 <div class="warning-badge">
                     <div class="warning-dot"></div>
-                    <span>Bu mesaj kendini imha edecek</span>
+                    <span data-tr="Bu mesaj kendini imha edecek" data-en="This message will self-destruct">Bu mesaj kendini imha edecek</span>
                 </div>
                 
                 <div class="timer-container">
@@ -83,27 +88,27 @@
                 
                 <div class="destruction-warning">
                     <span class="pulse"></span>
-                    <span>Süre dolduğunda mesaj silinecek</span>
+                    <span data-tr="Süre dolduğunda mesaj silinecek" data-en="Message will be deleted when time expires">Süre dolduğunda mesaj silinecek</span>
                 </div>
             </div>
             
             <div id="messageDestroyed" class="message-destroyed hidden">
                 <div class="destroyed-icon"></div>
-                <h2>Mesaj imha edildi</h2>
-                <p>Bu içerik artık mevcut değil.</p>
-                <a href="/" class="btn btn-primary">Ana sayfaya dön</a>
+                <h2 data-tr="Mesaj imha edildi" data-en="Message destroyed">Mesaj imha edildi</h2>
+                <p data-tr="Bu içerik artık mevcut değil." data-en="This content no longer exists.">Bu içerik artık mevcut değil.</p>
+                <a href="/" class="btn btn-primary" data-tr="Ana sayfaya dön" data-en="Back to home">Ana sayfaya dön</a>
             </div>
             
             <div id="messageNotFound" class="message-not-found hidden">
                 <div class="not-found-icon"></div>
-                <h2>Mesaj bulunamadı</h2>
-                <p>Bu mesaj daha önce görüntülenmiş veya süresi dolmuş.</p>
-                <a href="/" class="btn btn-primary">Ana sayfaya dön</a>
+                <h2 data-tr="Mesaj bulunamadı" data-en="Message not found">Mesaj bulunamadı</h2>
+                <p data-tr="Bu mesaj daha önce görüntülenmiş veya süresi dolmuş." data-en="This message has already been viewed or has expired.">Bu mesaj daha önce görüntülenmiş veya süresi dolmuş.</p>
+                <a href="/" class="btn btn-primary" data-tr="Ana sayfaya dön" data-en="Back to home">Ana sayfaya dön</a>
             </div>
         </section>
 
         <footer>
-            <p>Gizlilik odaklı • Uçtan uca şifreleme • Tek seferlik erişim</p>
+            <p data-tr="Gizlilik odaklı • Uçtan uca şifreleme • Tek seferlik erişim" data-en="Privacy focused • End-to-end encryption • One-time access">Gizlilik odaklı • Uçtan uca şifreleme • Tek seferlik erişim</p>
         </footer>
     </div>
 

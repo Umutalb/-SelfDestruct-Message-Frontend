@@ -240,3 +240,28 @@ messageInput.addEventListener('keydown', (e) => {
         createBtn.click();
     }
 });
+
+let currentLang = localStorage.getItem('lang') || 'tr';
+
+function setLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    
+    document.querySelectorAll('[data-tr]').forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
+    });
+    
+    document.querySelectorAll('[data-tr-placeholder]').forEach(el => {
+        el.placeholder = el.getAttribute(`data-${lang}-placeholder`);
+    });
+    
+    document.getElementById('langTR').classList.toggle('active', lang === 'tr');
+    document.getElementById('langEN').classList.toggle('active', lang === 'en');
+    
+    document.documentElement.lang = lang;
+}
+
+document.getElementById('langTR').addEventListener('click', () => setLanguage('tr'));
+document.getElementById('langEN').addEventListener('click', () => setLanguage('en'));
+
+setLanguage(currentLang);
