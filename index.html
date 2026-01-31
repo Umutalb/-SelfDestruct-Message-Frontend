@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burnout — Self-Destruct Messages</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <h1>burnout</h1>
+            </div>
+            <p class="tagline">Okunan mesaj, yok olan mesajdır.</p>
+        </header>
+
+        <section id="createSection" class="card">
+            <h2>Yeni Mesaj</h2>
+            
+            <div class="form-group">
+                <label for="messageInput">İçerik</label>
+                <textarea id="messageInput" placeholder="Mesajınızı yazın..." rows="4"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="durationInput">İmha süresi</label>
+                <div class="duration-wrapper">
+                    <input type="range" id="durationRange" min="5" max="60" value="15">
+                    <div class="duration-display">
+                        <input type="number" id="durationInput" min="5" max="60" value="15">
+                        <span>saniye</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="createBtn" class="btn btn-primary">
+                <span class="btn-text">Oluştur</span>
+                <span class="btn-loading">Oluşturuluyor...</span>
+            </button>
+
+            <div id="resultSection" class="result hidden">
+                <div class="result-header">
+                    <div class="status-dot"></div>
+                    <span>Link hazır</span>
+                </div>
+                <p class="result-info">Bu link yalnızca bir kez görüntülenebilir.</p>
+                
+                <div class="url-box">
+                    <input type="text" id="resultUrl" readonly>
+                    <button id="copyBtn" class="btn btn-copy">Kopyala</button>
+                </div>
+                
+                <button id="newMessageBtn" class="btn btn-ghost">Yeni mesaj oluştur</button>
+            </div>
+        </section>
+
+        <section id="viewSection" class="card hidden">
+            <div id="messageLoading" class="message-loading">
+                <div class="spinner"></div>
+                <p>Şifre çözülüyor...</p>
+            </div>
+            
+            <div id="messageContent" class="message-content hidden">
+                <div class="warning-badge">
+                    <div class="warning-dot"></div>
+                    <span>Bu mesaj kendini imha edecek</span>
+                </div>
+                
+                <div class="timer-container">
+                    <div class="timer-ring">
+                        <svg>
+                            <circle cx="50" cy="50" r="46" class="timer-bg"></circle>
+                            <circle cx="50" cy="50" r="46" id="timerCircle"></circle>
+                        </svg>
+                        <div class="timer-text" id="timerText">15</div>
+                    </div>
+                </div>
+                
+                <div class="secret-message" id="secretMessage"></div>
+                
+                <div class="destruction-warning">
+                    <span class="pulse"></span>
+                    <span>Süre dolduğunda mesaj silinecek</span>
+                </div>
+            </div>
+            
+            <div id="messageDestroyed" class="message-destroyed hidden">
+                <div class="destroyed-icon"></div>
+                <h2>Mesaj imha edildi</h2>
+                <p>Bu içerik artık mevcut değil.</p>
+                <a href="/" class="btn btn-primary">Ana sayfaya dön</a>
+            </div>
+            
+            <div id="messageNotFound" class="message-not-found hidden">
+                <div class="not-found-icon"></div>
+                <h2>Mesaj bulunamadı</h2>
+                <p>Bu mesaj daha önce görüntülenmiş veya süresi dolmuş.</p>
+                <a href="/" class="btn btn-primary">Ana sayfaya dön</a>
+            </div>
+        </section>
+
+        <footer>
+            <p>Gizlilik odaklı • Uçtan uca şifreleme • Tek seferlik erişim</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
